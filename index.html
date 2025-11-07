@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Date Application</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f8f3eb;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .card {
+      background: #fffaf3;
+      border: 1px solid #e0d7c6;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #5a4636;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #5c544b;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #4b4036;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.4rem;
+      border: 1px solid #d6cbb9;
+      border-radius: 8px;
+      background: #fffdf8;
+      font-size: 0.9rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background-color: #b08b57;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #9c7846;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .thankyou {
+      font-size: 1rem;
+      color: #4b4036;
+    }
+  </style>
+</head>
+<body>
+  <div class="card fade" id="formCard">
+    <h1>Date Application</h1>
+    <p>A brief form for candidates interested in participating in a Sunday Date.</p>
+
+    <div style="border-top:1px solid #e4d7c6; margin:1.5rem 0;"></div>
+
+    <h2 style="font-size:1.2rem; color:#5a4636;">About the Applicant</h2>
+    <p style="font-size:0.9rem;">
+      Life currently revolves around my business — glamorous, I know. Outside that, I’m into the outdoors,
+      nature, sports, and fitness. Occasionally found pretending to be cultured while traveling or exploring new places.
+    </p>
+
+    <label for="date">Preferred Sunday Date</label>
+    <input type="date" id="date">
+
+    <label for="time">Preferred Time</label>
+    <select id="time">
+      <option>Morning (coffee & sarcasm)</option>
+      <option>Afternoon (sunshine & questionable decisions)</option>
+      <option>Evening (wine & better conversation)</option>
+    </select>
+
+    <button onclick="submitForm()">Submit Application</button>
+  </div>
+
+  <div class="card fade" id="thankYouCard" style="display:none;">
+    <h2>Application Received ✅</h2>
+    <p class="thankyou">
+      Thank you for your submission. Unfortunately, I’m not an actual coder, so this form doesn’t send anywhere.
+      You’ll have to message me instead — consider it the final step of the application process.
+    </p>
+  </div>
+
+  <script>
+    window.onload = () => {
+      document.getElementById('formCard').classList.add('show');
+    };
+
+    function submitForm() {
+      document.getElementById('formCard').classList.remove('show');
+      setTimeout(() => {
+        document.getElementById('formCard').style.display = 'none';
+        const thankYou = document.getElementById('thankYouCard');
+        thankYou.style.display = 'block';
+        setTimeout(() => thankYou.classList.add('show'), 50);
+      }, 400);
+    }
+  </script>
+</body>
+</html>
